@@ -1,6 +1,6 @@
 {
     "name": "ruler.js",
-    "version": "0.0.1",
+    "version": "0.0.2",
     "title": "ruler.js",
     "appPath": "app",
     "description": "Canvas Ruler for authoring tools",
@@ -28,6 +28,7 @@
     "ignore": [
         "/*.*",
         "**/.*",
+        "/demo/.*",
         "node_modules",
         "bower_components",
         "app/bower_components",

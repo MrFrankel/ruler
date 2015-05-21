@@ -19,7 +19,8 @@ module.exports = function(grunt) {
                 tasks: ['bowerInstall']
             },
             js: {
-                files: ['<%= bowerApp.app %>/js/{,*/}*.js'],
+                files: ['<%= bowerApp.app %>/js/{,*/}*.js', '<%= bowerApp.app %>/demo/{,*/}*.js'],
+
                 options: {
                     livereload: true
                 }
@@ -50,14 +51,18 @@ module.exports = function(grunt) {
                 // Change this to '0.0.0.0' to access the server from outside.
                 hostname: 'localhost',
                 livereload: 35729,
-                base: '<%= bowerApp.app %>'
+                base: [
+                    '<%= bowerApp.app %>',
+                    '<%= bowerApp.app %>/demo/']
+
             },
             livereload: {
                 options: {
                     open: 'http://localhost:<%= connect.options.port %>',
                     base: [
                         '.tmp',
-                        '<%= bowerApp.app %>'
+                        '<%= bowerApp.app %>',
+                        '<%= bowerApp.app %>/demo/'
                     ],
                     // MODIFIED: Add this middleware configuration
                     middleware: function(connect, options) {
@@ -76,7 +81,7 @@ module.exports = function(grunt) {
         // Automatically inject Bower components into the app
         bowerInstall: {
             app: {
-                src: ['<%= bowerApp.app %>/index.html'],
+                src: ['<%= bowerApp.app %>/demo/index.html'],
                 ignorePath: '<%= bowerApp.app %>/'
             }
         },
