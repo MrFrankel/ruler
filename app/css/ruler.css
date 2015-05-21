@@ -1,0 +1,69 @@
+#wrapper{
+    height: 800px;
+    width: 1200px;
+    border: 1px solid green;
+    margin: auto;
+    position: relative;
+
+}
+
+.rul_wrapper{
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+}
+
+.rul_ruler{
+    display: block;
+    position: absolute;
+    border: 1px solid black;
+
+
+}
+
+.rul_corner{
+
+    top:0;
+    left:0;
+    background-color: white;
+    z-index: 10;
+}
+.rul_ruler_Vertical{
+    cursor: ns-resize;
+    z-index: 9;
+
+
+}
+
+.rul_ruler_Horizontal{
+    cursor: ew-resize;
+    z-index: 8;
+
+}
+
+.rul_line{
+    position: absolute;
+    border: 1px solid gray;
+}
+
+.rul_lineVer{
+    top: 0;
+    bottom: 0;
+    position: absolute;
+    border: 1px solid gray;
+}
+.rul_lineVer:hover{
+   cursor: ew-resize;
+}
+
+.rul_lineHor{
+    right: 0;
+    left: 0;
+    position: absolute;
+    border: 1px solid gray;
+}
+
+.rul_lineHor:hover{
+    cursor: ns-resize;
+}

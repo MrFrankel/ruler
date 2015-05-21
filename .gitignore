@@ -1,0 +1,4 @@
+.yo-rc.json
+node_modules/
+app/bower_components/
+.idea/
