@@ -1,7 +1,7 @@
 {
-    "name": "ruler",
+    "name": "ruler.js",
     "version": "0.0.1",
-    "title": "Ruler",
+    "title": "ruler.js",
     "appPath": "app",
     "description": "Canvas Ruler for authoring tools",
     "keywords": [
@@ -9,15 +9,15 @@
         "video",
         "gallery"
     ],
-    "homepage": "https://github.com/mmjr/Ruler.git",
+    "homepage": "https://github.com/MrFrankel/ruler.git",
     "author": {
         "name": "Maor"
     },
     "repository": {
         "type": "git",
-        "url": "git://github.com/mmjr/Ruler.git.git"
+        "url": "git://github.com/MrFrankel/ruler.git"
     },
-    "bugs": "https://github.com/mmjr/Ruler.git/issues",
+    "bugs": "https://github.com/MrFrankel/ruler.git/issues",
     "dependencies": {
     },
     "main": [
@@ -35,7 +35,7 @@
         "tests"
     ],
     "authors": [
-        "Maor <YOUR_MAIL@gmail.com>"
+        "Maor Frankel<maorfrank@gmail.com>"
     ],
     "license": "MIT"
 }
