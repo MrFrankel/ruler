@@ -1,8 +1,7 @@
 /**
  * Created by maor.frankel on 5/19/15.
  */
-var cont = document.querySelector('#wrapper');
-ruler.attachRulers({element: cont});
+ruler.constructRulers({container: '#wrapper'});
 
 function setPosX(val){
     ruler.setPos({x:val});

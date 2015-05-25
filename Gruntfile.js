@@ -9,7 +9,7 @@ module.exports = function(grunt) {
         // Project settings
         bowerApp: {
             // configurable app path
-            app: require('./bower.json').appPath || 'app',
+            app: require('./bower.json').appPath || 'app'
         },
 
         // Watches files for changes and runs tasks based on the changed files
@@ -78,6 +78,30 @@ module.exports = function(grunt) {
             }
 
         },
+        concat: {
+            dist: {
+                src: ['<%= bowerApp.app %>/js/**/*.js'],
+                dest: 'dist/ruler.js'
+            }
+        },
+        cssmin: {
+            dist: {
+                files: [{
+                    expand: true,
+                    cwd: '<%= bowerApp.app %>/css/',
+                    src: ['*.css', '!*.min.css'],
+                    dest: 'dist',
+                    ext: '.min.css'
+                }]
+            }
+        },
+        uglify: {
+            dist: {
+                files: {
+                    'dist/ruler.min.js': ['<%= bowerApp.app %>/js/ruler.js']
+                }
+            }
+        },
         // Automatically inject Bower components into the app
         bowerInstall: {
             app: {
@@ -97,6 +121,16 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-bower-install');
     grunt.loadNpmTasks('grunt-express');
     grunt.loadNpmTasks('grunt-shell');
+    grunt.loadNpmTasks('grunt-contrib-concat');
+    grunt.loadNpmTasks('grunt-contrib-cssmin');
+    grunt.loadNpmTasks('grunt-contrib-uglify');
+
+
+    grunt.registerTask('build', [
+        'concat',
+        'cssmin',
+        'uglify'
+    ]);
 
     // Register new tasks
     grunt.registerTask('serve', ['bowerInstall', 'connect', 'watch']);
