@@ -60,7 +60,7 @@ ruler.rulerConstructor =  function(_canvas, options, rulDimension)
 
             if (delta % 50 === 0) {
                 pointLength = lineLengthMax;
-                label = Math.round(Math.abs(delta)*rulScale);
+                label = Math.round(Math.abs(delta)/rulScale);
                 draw = true;
             }
             else if (delta % 25 === 0) {

@@ -12,7 +12,6 @@
     -webkit-user-select: none;  /* Chrome all / Safari all */
     -moz-user-select: none;     /* Firefox all */
     -ms-user-select: none;      /* IE 10+ */
-
     /* No support for these yet, use at own risk */
     -o-user-select: none;
     user-select: none;
@@ -41,20 +40,28 @@
 }
 
 .rul_cornerTL{
-    top:1px;
-    left:1px;
+    top:0;
+    left:0;
+    border-bottom: 1px solid gray;
+    border-right:  1px solid gray;
 }
 .rul_cornerTR{
     top:1px;
     right:1px;
+    border-bottom: 1px solid gray;
+    border-left:  1px solid gray;
 }
 .rul_cornerBL{
     bottom:1px;
     left:1px;
+    border-top: 1px solid gray;
+    border-right:  1px solid gray;
 }
 .rul_cornerBR{
     bottom:1px;
     right:1px;
+    border-top: 1px solid gray;
+    border-left:  1px solid gray;
 }
 .rul_ruler_Vertical{
     cursor: ew-resize;
@@ -86,7 +93,7 @@
 
 }
 .rul_lineVer:hover{
-   cursor: ew-resize;
+    cursor: ew-resize;
 }
 
 

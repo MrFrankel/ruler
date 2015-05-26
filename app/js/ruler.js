@@ -17,7 +17,7 @@ var ruler = (function (){
 		};
 
 	var rotateRuler = function(curRuler, angle){
-		var rotation = 'rotate(' + 90 + 'deg)';
+		var rotation = 'rotate(' + angle + 'deg)';
 		var origin = ruler.utils.pixelize(Math.abs(parseInt(curRuler.canvas.style.left))) + ' 100%';
 		curRuler.canvas.style.webkitTransform = rotation;
 		curRuler.canvas.style.MozTransform = rotation;
@@ -80,7 +80,7 @@ var ruler = (function (){
 
 			corner.title = 'Clear Guide lines';
 			ruler.utils.addClasss(corner, ['rul_corner', cornerStyle]);
-			corner.style.width = ruler.utils.pixelize(options.rulerHeight);
+			corner.style.width = ruler.utils.pixelize(options.rulerHeight + 1);
 			corner.style.height = ruler.utils.pixelize(options.rulerHeight);
 			return container.appendChild(corner);
 
@@ -100,7 +100,6 @@ var ruler = (function (){
 	var constructRulers = function(curOptions){
 		theRulerDOM = ruler.utils.addClasss(theRulerDOM, 'rul_wrapper');
 		options = ruler.utils.extend(defaultOptions, curOptions);
-		options.container = document.querySelector(options.container);
 		theRulerDOM = options.container.appendChild(theRulerDOM);
 		options.sides.forEach(function(side){
 			constructRuler(theRulerDOM, side);
