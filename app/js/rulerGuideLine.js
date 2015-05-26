@@ -55,6 +55,7 @@ ruler.guideLine = function(line, _dragContainer, options){
     };
 
     guideLine.addEventListener('mousedown', function (e){
+        e.stopPropagation();
         draggable.startMoving();
     });
 

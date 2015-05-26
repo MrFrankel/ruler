@@ -1,11 +1,4 @@
-#wrapper{
-    height: 800px;
-    width: 1200px;
-    border: 1px solid green;
-    margin: auto;
-    position: relative;
 
-}
 
 .rul_wrapper{
     position: absolute;
@@ -15,21 +8,36 @@
     pointer-events: none;
 }
 
+.rul_wrapper *{
+    -webkit-user-select: none;  /* Chrome all / Safari all */
+    -moz-user-select: none;     /* Firefox all */
+    -ms-user-select: none;      /* IE 10+ */
+
+    /* No support for these yet, use at own risk */
+    -o-user-select: none;
+    user-select: none;
+}
+
 .rul_ruler{
     display: block;
     position: absolute;
     border: 1px solid gray;
     pointer-events: all;
-
     filter: blur(0);
     -webkit-filter: blur(0);
 
 }
 
 .rul_corner{
+    pointer-events: all;
     position: absolute;
     background-color: white;
     z-index: 10;
+    cursor: pointer;
+}
+
+.rul_corner:hover{
+    background-color: lightgray;
 }
 
 .rul_cornerTL{
@@ -62,13 +70,13 @@
 
 .rul_line{
     position: absolute;
-    border-left: 1px solid lightblue;
-    border-bottom: 1px solid lightblue;
+    border-left: 1px solid #56aff4;
+    border-bottom: 1px solid #56aff4;
     pointer-events: all;
 }
-.rul_line :hover{
-    border-left: 1px solid black;
-    border-bottom: 1px solid black;
+.rul_line:hover{
+    border-left: 1px solid #458CC3;
+    border-bottom: 1px solid #458CC3;
 }
 
 .rul_lineVer{

@@ -50,6 +50,7 @@ var ruler = (function (){
 		curRul.canvas.addEventListener('mousedown', function (e){
 			var guide = document.createElement('div'),
 				guideStyle = curRul.dimension === VERTICAL ? 'rul_lineVer' : 'rul_lineHor';
+			guide.title = 'Double click to delete';
 			ruler.utils.addClasss(guide, ['rul_line', guideStyle]);
 			guide = container.appendChild(guide);
 			guides.push({dimension: curRul.dimension, line:ruler.guideLine(guide, options.container.querySelector('.rul_wrapper') ,options)});
@@ -77,16 +78,20 @@ var ruler = (function (){
 			var corner = document.createElement('div'),
 				cornerStyle = 'rul_corner' + side.toUpperCase();
 
+			corner.title = 'Clear Guide lines';
 			ruler.utils.addClasss(corner, ['rul_corner', cornerStyle]);
 			corner.style.width = ruler.utils.pixelize(options.rulerHeight);
 			corner.style.height = ruler.utils.pixelize(options.rulerHeight);
-			container.appendChild(corner);
+			return container.appendChild(corner);
 
 		}
 
 		return function (container, cornerSides) {
 			cornerSides.forEach(function (side){
-				cornerDraw(container, side);
+				cornerDraw(container, side).addEventListener('mousedown', function (e){
+					e.stopPropagation();
+					clearGuides();
+				})
 			})
 		}
 
@@ -156,12 +161,19 @@ var ruler = (function (){
 		})
 	};
 
+	var clearGuides = function (){
+		guides.forEach(function (guide){
+			guide.line.destroy();
+		})
+	};
+
 
 	return{
 		VERTICAL: VERTICAL,
 		HORIZONTAL: HORIZONTAL,
 		setPos: setPos,
 		setScale: setScale,
+		clearGuides: clearGuides,
 		constructRulers: constructRulers
 	}
 })();
