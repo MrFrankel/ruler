@@ -41,6 +41,9 @@ ruler.scale(1.5);
 change the scale of the points
 */
 ```
+### Demo
+<a class="jsbin-embed" href="http://jsbin.com/yibapokapi/1/embed?html,css,js">JS Bin</a><script src="http://static.jsbin.com/js/embed.js"></script>
+
 ### Version
 1.0.0
 
