@@ -77,19 +77,17 @@
 
 .rul_line{
     position: absolute;
-    border-left: 1px solid #56aff4;
-    border-bottom: 1px solid #56aff4;
+    background-color: #56aff4;
     pointer-events: all;
 }
 .rul_line:hover{
-    border-left: 1px solid #458CC3;
-    border-bottom: 1px solid #458CC3;
+    background-color: #458CC3;
 }
 
 .rul_lineVer{
     top: 0;
     bottom: 0;
-    width: 2px;
+    width: 1px;
 
 }
 .rul_lineVer:hover{
@@ -100,7 +98,7 @@
 .rul_lineHor{
     right: 0;
     left: 0;
-    height: 2px;
+    height: 1px;
 }
 
 .rul_lineHor:hover{

@@ -48,9 +48,6 @@ ruler.guideLine = function(line, _dragContainer, options){
     })();
 
     var destroy = function(){
-        guideLine.removeEventListener('mousedown');
-        guideLine.removeEventListener('mouseup');
-        guideLine.removeEventListener('dblclick');
         guideLine.parentNode.removeChild(guideLine);
     };
 
@@ -61,6 +58,18 @@ ruler.guideLine = function(line, _dragContainer, options){
 
     guideLine.addEventListener('mouseup', function (e){
         draggable.stopMoving();
+    });
+
+    guideLine.addEventListener('mouseover', function (e){
+        var x = parseInt(guideLine.style.left);
+        var y = parseInt(guideLine.style.top);
+        if(y){
+            guideLine.title = 'Y: ' + (y - 14);
+        }
+        else{
+            guideLine.title = 'X: ' + (x - 16);
+        }
+
     });
 
     guideLine.addEventListener('dblclick', function (e){

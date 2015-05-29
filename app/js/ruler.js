@@ -1,3 +1,4 @@
+"use strict";
 var ruler = (function (){
 	var VERTICAL = 1,
 		HORIZONTAL = 2;
