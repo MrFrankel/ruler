@@ -9,6 +9,7 @@ ruler.js is an HTML5 ruler plugin that provides a set of 'photoshop' like rulers
 ```
 bower install knockout-validation --save-dev
 ```
+<br/>
 #####Or directly
 <br/>
 ```html
@@ -16,7 +17,7 @@ bower install knockout-validation --save-dev
 <script src="js/ruler.js"></script>
 ```
 <br/>
-#Getting Started
+##Getting Started
 <hr>
 <br/>
 ```javascript
@@ -57,7 +58,7 @@ ruler.js uses grunt.
 $ git clone https://github.com/MrFrankel/ruler.git
 $ npm install
 $ bower install
-$ grune build
+$ grunt build
 ```
 
 ### Todo's
