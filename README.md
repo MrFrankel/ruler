@@ -2,7 +2,8 @@ ruler.js
 ======
 
 ruler.js is an HTML5 ruler plugin that provides a set of 'photoshop' like rulers to surround the 'stage' of your authoring tools.
-
+No jquery!
+No dependencies!
 ###Installation
 <hr>
 <br/>
@@ -22,12 +23,14 @@ bower install knockout-validation --save-dev
 <br/>
 ```javascript
  ruler.constructRulers({
-        container: document.querySelector('#stage'),// reffrence to DOM element to apply rulers on 
+        container: document.querySelector('#stage'),// reference to DOM element to apply rulers on
         rulerHeight: 15, // thickness of ruler
         fontFamily: 'arial',// font for points
         fontSize: '7px', 
         strokeStyle: 'black',
-        lineWidth: 1
+        lineWidth: 1,
+        enableMouseTracking: true,
+        enableToolTip: true
     });
 ```
 ### Usage 
@@ -40,7 +43,21 @@ ruler.scale(1.5);
 /*
 change the scale of the points
 */
+ruler.toggleRulerVisibility(true);
+/*
+hide/show rulers
+*/
+ruler.toggleGuideVisibility(true);
+/*
+hide/show guides
+*/
+ruler.clearGuides(true);
+/*
+clear all guides
+*/
 ```
+
+You can also clear a guide line by double clicking on it or dragging it back to the ruler
 ### Demo
 <a class="jsbin-embed" href="http://jsbin.com/yibapokapi/1/embed?output">JS Bin</a><script src="http://static.jsbin.com/js/embed.js"></script>
 

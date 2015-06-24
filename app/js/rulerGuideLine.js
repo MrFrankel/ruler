@@ -22,8 +22,8 @@ ruler.guideLine = function(line, _dragContainer, lineDimension, options,  curDel
             },
             startMoving : function(evt){
                 evt = evt || window.event;
-                var posX = evt.clientX,
-                    posY = evt.clientY,
+                var posX = evt ? evt.clientX : 0,
+                    posY = evt ? evt.clientY : 0,
                     divTop = parseInt(guideLine.style.top || 0),
                     divLeft = parseInt(guideLine.style.left || 0),
                     eWi = parseInt(guideLine.offsetWidth),
@@ -70,7 +70,9 @@ ruler.guideLine = function(line, _dragContainer, lineDimension, options,  curDel
     })();
 
     var showToolTip =  function (e){
-
+        if(!options.enableToolTip){
+            return;
+        }
         ruler.utils.addClasss(guideLine, 'rul_tooltip');
     };
 

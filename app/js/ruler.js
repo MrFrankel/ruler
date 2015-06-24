@@ -16,7 +16,9 @@ var ruler = (function (){
 			strokeStyle: 'gray',
 			sides: ['top', 'left'],
 			cornerSides: ['TL'],
-			lineWidth: 1
+			lineWidth: 1,
+			enableMouseTracking: true,
+			enableToolTip: true
 		};
 
 	var rotateRuler = function(curRuler, angle){

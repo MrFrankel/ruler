@@ -100,8 +100,9 @@ ruler.rulerConstructor =  function(_canvas, options, rulDimension)
             }
         });
     };
-
-    initTracker();
+    if(options.enableMouseTracking){
+        initTracker();
+    }
 
 
     return{
