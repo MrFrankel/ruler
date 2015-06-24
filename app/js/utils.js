@@ -27,5 +27,19 @@ ruler.utils = {
 
         return element;
 
+    },
+    removeClasss: function (element, classNames){
+        var curCalsss = element.className;
+        if(!(classNames instanceof Array))
+        {
+            classNames = [classNames];
+        }
+
+        classNames.forEach(function (name){
+            curCalsss = curCalsss.replace(name, '');
+        });
+        element.className = curCalsss;
+        return element;
+
     }
 } ;

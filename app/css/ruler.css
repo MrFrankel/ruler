@@ -65,13 +65,11 @@
 }
 .rul_ruler_Vertical{
     cursor: ew-resize;
-    z-index: 9;
     border-left: none;
 }
 
 .rul_ruler_Horizontal{
     cursor: ns-resize;
-    z-index: 8;
     border-top: none;
 }
 
@@ -79,6 +77,7 @@
     position: absolute;
     background-color: #56aff4;
     pointer-events: all;
+    z-index: 100000;
 }
 .rul_line:hover{
     background-color: #458CC3;
@@ -104,3 +103,29 @@
 .rul_lineHor:hover{
     cursor: ns-resize;
 }
+
+.rul_tooltip:after{
+    background: #A0A0A0;
+    border-radius: 2px;
+    color: #fff;
+    font-size: 10px;
+    content: attr(data-tip);
+    top: 50%;
+    left: 50%;
+    margin-top: 1px;
+    margin-left: 1px;
+    padding: 2px 5px;
+    position: absolute;
+    z-index: 10000;
+    min-width: 30px;
+}
+
+.rul_tracker{
+    height: 1px;
+    width: 1px;
+    background: black;
+    position: absolute;
+}
+
+
+

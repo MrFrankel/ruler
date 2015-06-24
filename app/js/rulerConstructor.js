@@ -10,7 +10,8 @@ ruler.rulerConstructor =  function(_canvas, options, rulDimension)
         rulLength = 0,
         rulScale = 1,
         dimension = rulDimension || ruler.HORIZONTAL,
-        orgPos = 0;
+        orgPos = 0,
+        tracker = document.createElement('div');
 
     var getLength = function (){
         return rulLength;
@@ -51,8 +52,6 @@ ruler.rulerConstructor =  function(_canvas, options, rulDimension)
             lineLengthMed = rulThickness / 2,
             lineLengthMin = rulThickness / 2;
 
-
-
         for (var pos = 0; pos <= rulLength; pos += 1) {
             delta = ((rulLength / 2) - pos);
             draw = false;
@@ -60,7 +59,7 @@ ruler.rulerConstructor =  function(_canvas, options, rulDimension)
 
             if (delta % 50 === 0) {
                 pointLength = lineLengthMax;
-                label = Math.round(Math.abs(delta)/rulScale);
+                label = Math.round(Math.abs(delta)*rulScale);
                 draw = true;
             }
             else if (delta % 25 === 0) {
@@ -76,9 +75,34 @@ ruler.rulerConstructor =  function(_canvas, options, rulDimension)
                 context.lineTo(pos + 0.5, pointLength +  0.5);
                 context.fillText(label, pos + 1.5, rulThickness / 2);
             }
-
         }
     };
+
+    var initTracker = function(){
+        tracker = options.container.appendChild(tracker);
+        ruler.utils.addClasss(tracker, 'rul_tracker');
+        var height = ruler.utils.pixelize(options.rulerHeight);
+        if(dimension === ruler.HORIZONTAL){
+            tracker.style.height = height;
+        }
+        else{
+            tracker.style.width = height;
+        }
+
+        options.container.addEventListener('mousemove', function(e){
+            var posX = e.clientX;
+            var posY = e.clientY;
+            if(dimension === ruler.HORIZONTAL){
+                tracker.style.left = ruler.utils.pixelize(posX - parseInt(options.container.offsetLeft));
+            }
+            else{
+                tracker.style.top = ruler.utils.pixelize(posY - parseInt(options.container.offsetTop)) ;
+            }
+        });
+    };
+
+    initTracker();
+
 
     return{
         getLength: getLength,

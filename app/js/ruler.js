@@ -1,7 +1,9 @@
 "use strict";
 var ruler = (function (){
 	var VERTICAL = 1,
-		HORIZONTAL = 2;
+		HORIZONTAL = 2,
+		CUR_DELTA_X = 0,
+		CUR_DELTA_Y = 0;
 
 	var options,
 		rulerz = {},
@@ -40,7 +42,7 @@ var ruler = (function (){
 				curRuler.orgPos = parseInt(curRuler.canvas.style.left);
 				break;
 			case 'left':
-				curRuler.canvas.style.top = ruler.utils.pixelize(-curRuler.canvas.height -1);
+				curRuler.canvas.style.top = ruler.utils.pixelize(-curRuler.canvas.height - 1);
 				curRuler.orgPos = parseInt(curRuler.canvas.style.top);
 				rotateRuler(curRuler, 90);
 				break;
@@ -48,13 +50,47 @@ var ruler = (function (){
 	};
 
 	var attachListners = function(container, curRul){
+		var guideIndex;
+		var moveCB = function (line, x, y){
+			var coor = line.dimension === VERTICAL ? x : y;
+			if(!line.assigned){
+				if(coor > options.rulerHeight){
+					line.assigned = true;
+				}
+				return;
+			}
+
+			if(coor < options.rulerHeight){
+				guides.some(function(guideLine, index){
+					if(guideLine.line === line){
+						guideIndex = index;
+						return true;
+					}
+				});
+				line.destroy();
+				guides.splice(guideIndex, 1);
+
+			}
+
+
+		};
+
 		curRul.canvas.addEventListener('mousedown', function (e){
 			var guide = document.createElement('div'),
-				guideStyle = curRul.dimension === VERTICAL ? 'rul_lineVer' : 'rul_lineHor';
+				guideStyle = curRul.dimension === VERTICAL ? 'rul_lineVer' : 'rul_lineHor',
+				curDelta = curRul.dimension === VERTICAL ? CUR_DELTA_X : CUR_DELTA_Y;
 			guide.title = 'Double click to delete';
 			ruler.utils.addClasss(guide, ['rul_line', guideStyle]);
 			guide = container.appendChild(guide);
-			guides.push({dimension: curRul.dimension, line:ruler.guideLine(guide, options.container.querySelector('.rul_wrapper') ,options)});
+			if(curRul.dimension === VERTICAL){
+				guide.style.left = ruler.utils.pixelize(e.clientX - options.container.offsetLeft);
+			}
+			else{
+				guide.style.top = ruler.utils.pixelize(e.clientY - options.container.offsetTop);
+			}
+			guides.push({dimension: curRul.dimension, line:ruler.guideLine(guide, options.container.querySelector('.rul_wrapper') ,curRul.dimension,  options, curDelta, moveCB)});
+
+
 		});
 
 	};
@@ -65,13 +101,13 @@ var ruler = (function (){
 			rulerStyle = dimension === VERTICAL ? 'rul_ruler_Vertical' : 'rul_ruler_Horizontal',
 			element = document.createElement('canvas');
 
+
 		ruler.utils.addClasss(element, ['rul_ruler', rulerStyle, 'rul_align_' + alignment]);
 		canvas = container.appendChild(element);
 		rulerz[alignment] = ruler.rulerConstructor(canvas, options, dimension);
 		rulerz[alignment].drawRuler(container.offsetWidth, options.rulerHeight);
 		positionRuler(rulerz[alignment], alignment);
 		attachListners(container, rulerz[alignment]);
-
 	};
 
 	var constructCorner = (function(){
@@ -133,38 +169,75 @@ var ruler = (function (){
 		forEachRuler(function (curRul){
 			if(curRul.dimension === ruler.VERTICAL){
 				orgY = curRul.canvas.style.top;
-				curRul.canvas.style.top = ruler.utils.pixelize(curRul.orgPos + parseInt(values.y));
+				curRul.canvas.style.top = ruler.utils.pixelize(curRul.orgPos + (parseInt(values.y)));
 				deltaY = parseInt(orgY) - parseInt(curRul.canvas.style.top);
 			}
 			else{
 				orgX = curRul.canvas.style.left;
-				curRul.canvas.style.left = ruler.utils.pixelize(curRul.orgPos + parseInt(values.x));
+				curRul.canvas.style.left = ruler.utils.pixelize(curRul.orgPos + (parseInt(values.x)));
 				deltaX = parseInt(orgX) - parseInt(curRul.canvas.style.left);
 			}
 		});
 		guides.forEach(function(guide){
 			if(guide.dimension === HORIZONTAL){
 				guide.line.guideLine.style.top = ruler.utils.pixelize(parseInt(guide.line.guideLine.style.top) - deltaY);
+				guide.line.curPosDelta = parseInt(values.y);
 			}
 			else{
 				guide.line.guideLine.style.left = ruler.utils.pixelize(parseInt(guide.line.guideLine.style.left) - deltaX);
+				guide.line.curPosDelta = parseInt(values.x);
 			}
-		})
+		});
+		CUR_DELTA_X = parseInt(values.x);
+		CUR_DELTA_Y = parseInt(values.y);
+
 	};
 
 	var setScale = function (newScale){
+		var curPos, orgDelta, curScaleFac;
 		forEachRuler(function (rul){
 			rul.context.clearRect(0, 0, rul.canvas.width, rul.canvas.height);
 			rul.context.beginPath();
 			rul.setScale(newScale);
 			rul.context.stroke();
-		})
+		});
+
+		guides.forEach(function (guide){
+			if(guide.dimension === HORIZONTAL){
+				curPos = parseInt(guide.line.guideLine.style.top);
+				orgDelta = options.rulerHeight + 1;
+				curScaleFac = (parseFloat(newScale) / guide.line.curScale);
+				guide.line.guideLine.style.top = ruler.utils.pixelize(((curPos - orgDelta - CUR_DELTA_Y ) / curScaleFac) +  orgDelta + CUR_DELTA_Y);
+				guide.line.curScale = newScale;
+			}
+			else {
+				curPos = parseInt(guide.line.guideLine.style.left);
+				orgDelta = options.rulerHeight + 1;
+				curScaleFac = (parseFloat(newScale) / guide.line.curScale);
+				guide.line.guideLine.style.left = ruler.utils.pixelize(((curPos - orgDelta - CUR_DELTA_X) / curScaleFac)  + orgDelta + CUR_DELTA_X);
+				guide.line.curScale = newScale;
+			}
+		});
 	};
+
 
 	var clearGuides = function (){
 		guides.forEach(function (guide){
 			guide.line.destroy();
-		})
+		});
+		guides = [];
+	};
+
+	var toggleGuideVisibility = function (val){
+		var func = val ? 'show' : 'hide';
+		guides.forEach(function (guide){
+			guide.line[func]();
+		});
+	};
+
+	var toggleRulerVisibility = function (val){
+		var state = val ? 'block' : 'none';
+		options.container.style.display = state;
 	};
 
 
@@ -174,7 +247,10 @@ var ruler = (function (){
 		setPos: setPos,
 		setScale: setScale,
 		clearGuides: clearGuides,
-		constructRulers: constructRulers
+		constructRulers: constructRulers,
+		toggleRulerVisibility: toggleRulerVisibility,
+		toggleGuideVisibility: toggleGuideVisibility
+
 	}
 })();
 
