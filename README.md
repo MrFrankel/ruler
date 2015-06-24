@@ -59,7 +59,7 @@ clear all guides
 
 You can also clear a guide line by double clicking on it or dragging it back to the ruler
 ### Demo
-<a class="jsbin-embed" href="http://jsbin.com/qotazibuke/edit?output">JS Bin</a><script src="http://static.jsbin.com/js/embed.js"></script>
+<a class="jsbin-embed" href="http://jsbin.com/qonababuyu/1/edit?output">JS Bin</a><script src="http://static.jsbin.com/js/embed.js"></script>
 
 ### Version
 1.0.0
