@@ -125,6 +125,7 @@
     width: 1px;
     background: black;
     position: absolute;
+    pointer-events: none;
 }
 
 
