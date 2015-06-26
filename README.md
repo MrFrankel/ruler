@@ -8,7 +8,7 @@ No dependencies!
 <hr>
 <br/>
 ```
-bower install knockout-validation --save-dev
+bower install ruler.js --save-dev
 ```
 <br/>
 #####Or directly
