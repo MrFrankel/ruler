@@ -1,7 +1,7 @@
 /**
  * Created by maor.frankel on 5/23/15.
  */
-ruler.guideLine = function(line, _dragContainer, lineDimension, options,  curDelta, moveCB){
+ruler.guideLine = function(line, _dragContainer, lineDimension, options,  curDelta, moveCB, event){
 
     var self,
         guideLine = line,
@@ -117,7 +117,7 @@ ruler.guideLine = function(line, _dragContainer, lineDimension, options,  curDel
         destroy();
     });
 
-    draggable.startMoving();
+    draggable.startMoving(event);
 
     self = {
         setAsDraggable: draggable,

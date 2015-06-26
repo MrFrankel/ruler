@@ -90,7 +90,7 @@ var ruler = (function (){
 			else{
 				guide.style.top = ruler.utils.pixelize(e.clientY - options.container.offsetTop);
 			}
-			guides.push({dimension: curRul.dimension, line:ruler.guideLine(guide, options.container.querySelector('.rul_wrapper') ,curRul.dimension,  options, curDelta, moveCB)});
+			guides.push({dimension: curRul.dimension, line:ruler.guideLine(guide, options.container.querySelector('.rul_wrapper') ,curRul.dimension,  options, curDelta, moveCB, e)});
 
 
 		});
