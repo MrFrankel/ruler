@@ -55,9 +55,9 @@ var ruler = (function (){
 		var guideIndex;
 		var moveCB = function (line, x, y){
 			var coor = line.dimension === VERTICAL ? x : y;
-			if(!line.assigned){
+			if(!line.assigned()){
 				if(coor > options.rulerHeight){
-					line.assigned = true;
+					line.assigned(true);
 				}
 				return;
 			}
@@ -183,11 +183,11 @@ var ruler = (function (){
 		guides.forEach(function(guide){
 			if(guide.dimension === HORIZONTAL){
 				guide.line.guideLine.style.top = ruler.utils.pixelize(parseInt(guide.line.guideLine.style.top) - deltaY);
-				guide.line.curPosDelta = parseInt(values.y);
+				guide.line.curPosDelta(parseInt(values.y));
 			}
 			else{
 				guide.line.guideLine.style.left = ruler.utils.pixelize(parseInt(guide.line.guideLine.style.left) - deltaX);
-				guide.line.curPosDelta = parseInt(values.x);
+				guide.line.curPosDelta(parseInt(values.x));
 			}
 		});
 		CUR_DELTA_X = parseInt(values.x);

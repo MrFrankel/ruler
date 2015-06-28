@@ -6,10 +6,26 @@ ruler.guideLine = function(line, _dragContainer, lineDimension, options,  curDel
     var self,
         guideLine = line,
         curScale = 1,
-        curPosDelta = curDelta || 0,
+        _assigned = false,
+        _curPosDelta = curDelta || 0,
         dragContainer = _dragContainer,
         dimension = lineDimension || ruler.HORIZONTAL,
-        moveCB = moveCB || function(){}, assigned = false;
+        moveCB = moveCB || function(){};
+
+
+    var curPosDelta = function(val){
+        if(typeof val === 'undefined'){
+            return _curPosDelta;
+        }
+        return (_curPosDelta = val);
+    };
+
+    var assigned = function(val){
+        if(typeof val === 'undefined'){
+            return _assigned;
+        }
+        return (_assigned = val);
+    };
 
 
     var draggable = (function(){
@@ -78,10 +94,10 @@ ruler.guideLine = function(line, _dragContainer, lineDimension, options,  curDel
 
     var updateToolTip = function (x, y){
         if(y){
-            guideLine.dataset.tip = 'Y: ' + (y - options.rulerHeight - 1 - curPosDelta);
+            guideLine.dataset.tip = 'Y: ' + (y - options.rulerHeight - 1 - _curPosDelta);
         }
         else{
-            guideLine.dataset.tip = 'X: ' + (x - options.rulerHeight - 1 - curPosDelta);
+            guideLine.dataset.tip = 'X: ' + (x - options.rulerHeight - 1 - _curPosDelta);
         }
     };
 
@@ -125,6 +141,7 @@ ruler.guideLine = function(line, _dragContainer, lineDimension, options,  curDel
         stopDrag:  draggable.stopMoving,
         destroy: destroy,
         curScale: curScale,
+        assigned: assigned,
         curPosDelta: curPosDelta,
         guideLine: guideLine,
         dimension: dimension,
