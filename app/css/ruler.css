@@ -20,7 +20,7 @@
 .rul_ruler{
     display: block;
     position: absolute;
-    border: 1px solid gray;
+    border: 1px solid rgba(206, 219, 236, .5);
     pointer-events: all;
     filter: blur(0);
     -webkit-filter: blur(0);
@@ -43,26 +43,26 @@
 .rul_cornerTL{
     top:0;
     left:0;
-    border-bottom: 1px solid gray;
-    border-right:  1px solid gray;
+    border-bottom: 1px solid rgba(206, 219, 236, .5);
+    border-right:  1px solid rgba(206, 219, 236, .5);
 }
 .rul_cornerTR{
     top:1px;
     right:1px;
-    border-bottom: 1px solid gray;
-    border-left:  1px solid gray;
+    border-bottom: 1px solid rgba(206, 219, 236, .5);
+    border-left:  1px solid rgba(206, 219, 236, .5);
 }
 .rul_cornerBL{
     bottom:1px;
     left:1px;
-    border-top: 1px solid gray;
-    border-right:  1px solid gray;
+    border-top: 1px solid rgba(206, 219, 236, .5);
+    border-right:  1px solid rgba(206, 219, 236, .5);
 }
 .rul_cornerBR{
     bottom:1px;
     right:1px;
-    border-top: 1px solid gray;
-    border-left:  1px solid gray;
+    border-top: 1px solid rgba(206, 219, 236, .5);
+    border-left:  1px solid rgba(206, 219, 236, .5);
 }
 .rul_ruler_Vertical{
     cursor: ew-resize;
@@ -76,29 +76,34 @@
 
 .rul_line{
     position: absolute;
-    background-color: #56aff4;
+    color: transparent;
+    background-color: transparent;
+    border-bottom: 1px solid #3BB7C7;
+    border-left: 1px solid #3BB7C7;
     pointer-events: all;
     z-index: 1000;
 }
+.rul_line_dragged{
+    border: 1px dotted #6B7587;
+}
+
 .rul_line:hover{
-    background-color: #458CC3;
+    border-bottom: 1px solid #236E77;
+    border-left: 1px solid #236E77;
 }
 
 .rul_lineVer{
     top: 0;
     bottom: 0;
-    width: 1px;
-
 }
+
 .rul_lineVer:hover{
     cursor: ew-resize;
 }
 
-
 .rul_lineHor{
     right: 0;
     left: 0;
-    height: 1px;
 }
 
 .rul_lineHor:hover{
@@ -106,9 +111,9 @@
 }
 
 .rul_tooltip:after{
-    background: #A0A0A0;
-    border-radius: 2px;
-    color: #fff;
+    background: #fff;
+    color: black;
+    border: 1px solid gray;
     font-size: 10px;
     content: attr(data-tip);
     top: 50%;
@@ -117,8 +122,8 @@
     margin-left: 1px;
     padding: 2px 5px;
     position: absolute;
-    z-index: 1001;
-    min-width: 30px;
+    z-index: 10001;
+    min-width: 45px;
 }
 
 .rul_tracker{
