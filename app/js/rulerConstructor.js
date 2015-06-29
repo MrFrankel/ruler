@@ -73,7 +73,7 @@ ruler.rulerConstructor =  function(_canvas, options, rulDimension)
             if (draw) {
                 context.moveTo(pos + 0.5, rulThickness + 0.5);
                 context.lineTo(pos + 0.5, pointLength +  0.5);
-                context.fillText(label, pos + 1.5, rulThickness / 2);
+                context.fillText(label, pos + 1.5, (rulThickness / 2) + 1);
             }
         }
     };
