@@ -208,16 +208,16 @@ var ruler = (function (){
 			if(guide.dimension === HORIZONTAL){
 				curPos = parseInt(guide.line.guideLine.style.top);
 				orgDelta = options.rulerHeight + 1;
-				curScaleFac = (parseFloat(newScale) / guide.line.curScale);
+				curScaleFac = (parseFloat(newScale) / guide.line.curScale());
 				guide.line.guideLine.style.top = ruler.utils.pixelize(((curPos - orgDelta - CUR_DELTA_Y ) / curScaleFac) +  orgDelta + CUR_DELTA_Y);
-				guide.line.curScale = newScale;
+				guide.line.curScale(newScale);
 			}
 			else {
 				curPos = parseInt(guide.line.guideLine.style.left);
 				orgDelta = options.rulerHeight + 1;
-				curScaleFac = (parseFloat(newScale) / guide.line.curScale);
+				curScaleFac = (parseFloat(newScale) / guide.line.curScale());
 				guide.line.guideLine.style.left = ruler.utils.pixelize(((curPos - orgDelta - CUR_DELTA_X) / curScaleFac)  + orgDelta + CUR_DELTA_X);
-				guide.line.curScale = newScale;
+				guide.line.curScale(newScale);
 			}
 		});
 	};
