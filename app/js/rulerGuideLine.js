@@ -45,6 +45,7 @@ ruler.guideLine = function(line, _dragContainer, lineDimension, options,  curDel
                 moveCB(self, xpos, ypos);
             },
             startMoving : function(evt){
+                ruler.utils.addClasss(guideLine, ['rul_line_dragged']);
                 evt = evt || window.event;
                 var posX = evt ? evt.clientX : 0,
                     posY = evt ? evt.clientY : 0,
@@ -89,6 +90,7 @@ ruler.guideLine = function(line, _dragContainer, lineDimension, options,  curDel
                 guideLine.style.cursor=null;
                 document.onmousemove = function (){};
                 hideToolTip();
+                ruler.utils.removeClasss(guideLine, ['rul_line_dragged']);
             }
         }
     })();
@@ -102,10 +104,10 @@ ruler.guideLine = function(line, _dragContainer, lineDimension, options,  curDel
 
     var updateToolTip = function (x, y){
         if(y){
-            guideLine.dataset.tip = 'Y: ' + Math.round((y - options.rulerHeight - 1 - _curPosDelta)*_curScale);
+            guideLine.dataset.tip = 'Y: ' + Math.round((y - options.rulerHeight - 1 - _curPosDelta)*_curScale) + ' px';
         }
         else{
-            guideLine.dataset.tip = 'X: '  + Math.round((x - options.rulerHeight - 1 - _curPosDelta)*_curScale);
+            guideLine.dataset.tip = 'X: '  + Math.round((x - options.rulerHeight - 1 - _curPosDelta)*_curScale) + ' px';
         }
     };
 
@@ -157,7 +159,5 @@ ruler.guideLine = function(line, _dragContainer, lineDimension, options,  curDel
         show: show
     };
     return self;
-
-
 
 };

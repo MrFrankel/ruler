@@ -1,6 +1,4 @@
-/**
- * Created by maor.frankel on 5/23/15.
- */
+
 ruler.rulerConstructor =  function(_canvas, options, rulDimension)
 {
 
@@ -118,5 +116,4 @@ ruler.rulerConstructor =  function(_canvas, options, rulDimension)
         drawPoints: drawPoints
     }
 };
-
 
