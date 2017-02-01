@@ -55,6 +55,10 @@ ruler.clearGuides(true);
 /*
 clear all guides
 */
+ruler.destory(true);
+/*
+remove rulers, guides and references;
+*/
 ```
 
 

@@ -41,6 +41,8 @@ ruler.rulerConstructor =  function(_canvas, options, rulDimension)
         context.stroke();
     };
 
+
+
     var drawPoints = function () {
         var  pointLength = 0,
             label = '',
@@ -76,6 +78,24 @@ ruler.rulerConstructor =  function(_canvas, options, rulDimension)
         }
     };
 
+    var mousemove = function(e) {
+      var posX = e.clientX;
+      var posY = e.clientY;
+      if(dimension === ruler.HORIZONTAL){
+        tracker.style.left = ruler.utils.pixelize(posX - parseInt(options.container.offsetLeft));
+      }
+      else{
+        tracker.style.top = ruler.utils.pixelize(posY - parseInt(options.container.offsetTop)) ;
+      }
+    };
+
+    var destroy = function(){
+      options.container.removeEventListener('mousemove', mousemove);
+      tracker.parentNode.removeChild(tracker);
+      this.clearListeners && this.clearListeners();
+
+    };
+
     var initTracker = function(){
         tracker = options.container.appendChild(tracker);
         ruler.utils.addClasss(tracker, 'rul_tracker');
@@ -87,17 +107,9 @@ ruler.rulerConstructor =  function(_canvas, options, rulDimension)
             tracker.style.width = height;
         }
 
-        options.container.addEventListener('mousemove', function(e){
-            var posX = e.clientX;
-            var posY = e.clientY;
-            if(dimension === ruler.HORIZONTAL){
-                tracker.style.left = ruler.utils.pixelize(posX - parseInt(options.container.offsetLeft));
-            }
-            else{
-                tracker.style.top = ruler.utils.pixelize(posY - parseInt(options.container.offsetTop)) ;
-            }
-        });
+        options.container.addEventListener('mousemove', mousemove);
     };
+
     if(options.enableMouseTracking){
         initTracker();
     }
@@ -113,7 +125,8 @@ ruler.rulerConstructor =  function(_canvas, options, rulDimension)
         canvas: canvas,
         context: context,
         drawRuler: drawRuler,
-        drawPoints: drawPoints
+        drawPoints: drawPoints,
+        destroy: destroy
     }
 };
 

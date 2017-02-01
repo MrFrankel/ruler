@@ -14,3 +14,7 @@ function setPosY(val){
 function setScale(val){
     ruler.setScale(val);
 }
+
+function destory(){
+  ruler.destroy();
+}
