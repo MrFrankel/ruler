@@ -118,6 +118,7 @@ ruler.guideLine = function (line, _dragContainer, lineDimension, options, curDel
 
   var destroy = function () {
     draggable.stopMoving();
+    moveCB = null;
     guideLine.removeEventListener('mousedown', mousedown);
     guideLine.removeEventListener('mouseup', mouseup);
     guideLine.removeEventListener('dblclick', dblclick);
@@ -151,8 +152,7 @@ ruler.guideLine = function (line, _dragContainer, lineDimension, options, curDel
   guideLine.addEventListener('mouseup', mouseup);
 
   guideLine.addEventListener('dblclick', dblclick);
-
-  draggable.startMoving(event);
+  if(event) draggable.startMoving(event);
 
   self = {
     setAsDraggable: draggable,

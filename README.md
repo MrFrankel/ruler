@@ -52,6 +52,12 @@ ruler.toggleGuideVisibility(true);
 hide/show guides
 */
 ruler.clearGuides(true);
+get list of guides to store or copy
+*/
+ruler.getGuides(true);
+set guides from a pre stored list
+*/
+ruler.setGuides(true);
 /*
 clear all guides
 */
