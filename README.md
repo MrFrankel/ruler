@@ -8,7 +8,7 @@ No dependencies!
 <hr>
 <br/>
 ```
-bower install ruler.js --save-dev
+bower install ruler.js --save
 ```
 <br/>
 #####Or directly
