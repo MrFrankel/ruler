@@ -1,6 +1,11 @@
 ruler.js
 ======
+
 Demo page
+### Demo
+<a class="jsbin-embed" href="http://jsbin.com/nosumaroci/embed?html,css,js">JS Bin on jsbin.com</a><script src="http://static.jsbin.com/js/embed.min.js?3.41.5"></script>
+
+
 ruler.js is an HTML5 ruler plugin that provides a set of 'photoshop' like rulers to surround the 'stage' of your authoring tools.
 No jquery!
 No dependencies!
@@ -71,8 +76,8 @@ remove rulers, guides and references;
 
 
 You can also clear a guide line by double clicking on it or dragging it back to the ruler
-### Demo
-<a class="jsbin-embed" href="http://jsbin.com/qonababuyu/1/edit?output">JS Bin</a><script src="http://static.jsbin.com/js/embed.js"></script>
+
+
 
 ### Version
 1.0.0
