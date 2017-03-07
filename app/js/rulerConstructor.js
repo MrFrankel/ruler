@@ -1,5 +1,5 @@
 
-ruler.rulerConstructor =  function(_canvas, options, rulDimension)
+ruler.prototype.rulerConstructor =  function(_canvas, options, rulDimension)
 {
 
     var canvas = _canvas,
@@ -7,7 +7,7 @@ ruler.rulerConstructor =  function(_canvas, options, rulDimension)
         rulThickness = 0,
         rulLength = 0,
         rulScale = 1,
-        dimension = rulDimension || ruler.HORIZONTAL,
+        dimension = rulDimension || 2,
         orgPos = 0,
         tracker = document.createElement('div');
 
@@ -81,11 +81,11 @@ ruler.rulerConstructor =  function(_canvas, options, rulDimension)
     var mousemove = function(e) {
       var posX = e.clientX;
       var posY = e.clientY;
-      if(dimension === ruler.HORIZONTAL){
-        tracker.style.left = ruler.utils.pixelize(posX - parseInt(options.container.offsetLeft));
+      if(dimension === 2){
+        tracker.style.left = ruler.prototype.utils.pixelize(posX - parseInt(options.container.getBoundingClientRect().left));
       }
       else{
-        tracker.style.top = ruler.utils.pixelize(posY - parseInt(options.container.offsetTop)) ;
+        tracker.style.top = ruler.prototype.utils.pixelize(posY - parseInt(options.container.getBoundingClientRect().top)) ;
       }
     };
 
@@ -98,9 +98,9 @@ ruler.rulerConstructor =  function(_canvas, options, rulDimension)
 
     var initTracker = function(){
         tracker = options.container.appendChild(tracker);
-        ruler.utils.addClasss(tracker, 'rul_tracker');
-        var height = ruler.utils.pixelize(options.rulerHeight);
-        if(dimension === ruler.HORIZONTAL){
+        ruler.prototype.utils.addClasss(tracker, 'rul_tracker');
+        var height = ruler.prototype.utils.pixelize(options.rulerHeight);
+        if(dimension === 2){
             tracker.style.height = height;
         }
         else{

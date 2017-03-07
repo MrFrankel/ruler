@@ -1,7 +1,7 @@
 /**
  * Created by maor.frankel on 5/23/15.
  */
-ruler.guideLine = function (line, _dragContainer, lineDimension, options, curDelta, moveCB, event) {
+ruler.prototype.guideLine = function (line, _dragContainer, lineDimension, options, curDelta, moveCB, event) {
 
   var self,
     guideLine = line,
@@ -9,7 +9,7 @@ ruler.guideLine = function (line, _dragContainer, lineDimension, options, curDel
     _assigned = false,
     _curPosDelta = curDelta || 0,
     dragContainer = _dragContainer,
-    dimension = lineDimension || ruler.HORIZONTAL,
+    dimension = lineDimension || 2,
     moveCB = moveCB || function () {
       };
 
@@ -39,13 +39,13 @@ ruler.guideLine = function (line, _dragContainer, lineDimension, options, curDel
   var draggable = (function () {
     return {
       move: function (xpos, ypos) {
-        guideLine.style.left = ruler.utils.pixelize(xpos);
-        guideLine.style.top = ruler.utils.pixelize(ypos);
+        guideLine.style.left = ruler.prototype.utils.pixelize(xpos);
+        guideLine.style.top = ruler.prototype.utils.pixelize(ypos);
         updateToolTip(xpos, ypos);
         moveCB(self, xpos, ypos);
       },
       startMoving: function (evt) {
-        ruler.utils.addClasss(guideLine, ['rul_line_dragged']);
+        ruler.prototype.utils.addClasss(guideLine, ['rul_line_dragged']);
         evt = evt || window.event;
         var posX = evt ? evt.clientX : 0,
           posY = evt ? evt.clientY : 0,
@@ -55,7 +55,7 @@ ruler.guideLine = function (line, _dragContainer, lineDimension, options, curDel
           eHe = parseInt(guideLine.offsetHeight),
           cWi = parseInt(dragContainer.offsetWidth),
           cHe = parseInt(dragContainer.offsetHeight),
-          cursor = dimension === ruler.HORIZONTAL ? 'ns-resize' : 'ew-resize';
+          cursor = dimension === 2 ? 'ns-resize' : 'ew-resize';
 
         options.container.style.cursor = cursor;
         guideLine.style.cursor = cursor;
@@ -67,6 +67,7 @@ ruler.guideLine = function (line, _dragContainer, lineDimension, options, curDel
             posY = evt.clientY,
             aX = posX - diffX,
             aY = posY - diffY;
+
           if (aX < 0) {
             aX = 0;
           }
@@ -91,7 +92,7 @@ ruler.guideLine = function (line, _dragContainer, lineDimension, options, curDel
         document.onmousemove = function () {
         };
         hideToolTip();
-        ruler.utils.removeClasss(guideLine, ['rul_line_dragged']);
+        ruler.prototype.utils.removeClasss(guideLine, ['rul_line_dragged']);
       }
     }
   })();
@@ -100,7 +101,7 @@ ruler.guideLine = function (line, _dragContainer, lineDimension, options, curDel
     if (!options.enableToolTip) {
       return;
     }
-    ruler.utils.addClasss(guideLine, 'rul_tooltip');
+    ruler.prototype.utils.addClasss(guideLine, 'rul_tooltip');
   };
 
   var updateToolTip = function (x, y) {
@@ -113,7 +114,7 @@ ruler.guideLine = function (line, _dragContainer, lineDimension, options, curDel
   };
 
   var hideToolTip = function (e) {
-    ruler.utils.removeClasss(guideLine, 'rul_tooltip');
+    ruler.prototype.utils.removeClasss(guideLine, 'rul_tooltip');
   };
 
   var destroy = function () {

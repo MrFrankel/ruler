@@ -1,8 +1,8 @@
 {
-  "version": "0.0.2",
+  "version": "0.0.3",
   "dependencies": {},
   "repository": "https://github.com/yuvalsaraf/generator-bower-package.git",
-  "description": "A project for building your own bower component and share it later",
+  "description": "canvas rulers",
   "devDependencies": {
     "connect-modrewrite": "^0.7.6",
     "grunt-bower-install": "^1.6.0",

@@ -1,7 +1,7 @@
 /**
  * Created by maor.frankel on 5/25/15.
  */
-ruler.utils = {
+ruler.prototype.utils = {
     extend: function extend(){
         for(var i=1; i< arguments.length; i++)
             for(var key in arguments[i])

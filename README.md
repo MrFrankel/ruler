@@ -1,6 +1,6 @@
 ruler.js
 ======
-
+Demo page
 ruler.js is an HTML5 ruler plugin that provides a set of 'photoshop' like rulers to surround the 'stage' of your authoring tools.
 No jquery!
 No dependencies!
@@ -22,7 +22,7 @@ bower install ruler.js --save
 <hr>
 <br/>
 ```javascript
- ruler.constructRulers({
+var myRuler = new ruler({
         container: document.querySelector('#stage'),// reference to DOM element to apply rulers on
         rulerHeight: 15, // thickness of ruler
         fontFamily: 'arial',// font for points
@@ -35,35 +35,35 @@ bower install ruler.js --save
 ```
 ### Usage 
 ```javascript
-ruler.setPos({x:100, y:100})
+myRuler.api.setPos({x:100, y:100})
 /*
 change the left, top, positions of the rulers
 */
-ruler.scale(1.5);
+myRuler.api.scale(1.5);
 /*
 change the scale of the points
 */
-ruler.toggleRulerVisibility(true);
+myRuler.api.toggleRulerVisibility(true);
 /*
 hide/show rulers
 */
-ruler.toggleGuideVisibility(true);
+myRuler.api.toggleGuideVisibility(true);
 /*
 hide/show guides
 */
-ruler.clearGuides(true);
+myRuler.api.clearGuides(true);
 /*
 get list of guides to store or copy
 */
-ruler.getGuides(true);
+myRuler.api.getGuides(true);
 /*
 set guides from a pre stored list
 */
-ruler.setGuides(true);
+myRuler.api.setGuides(true);
 /*
 clear all guides
 */
-ruler.destory(true);
+myRuler.api.destory(true);
 /*
 remove rulers, guides and references;
 */
@@ -97,7 +97,7 @@ $ grunt build
 ### Todo's
 
 Write Tests
-Demo page
+
 
 License
 ----

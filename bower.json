@@ -1,6 +1,6 @@
 {
     "name": "ruler.js",
-    "version": "0.1.0",
+    "version": "0.1.1",
     "title": "ruler.js",
     "appPath": "app",
     "description": "Canvas Ruler for authoring tools",
