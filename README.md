@@ -12,20 +12,25 @@ No dependencies!
 ###Installation
 <hr>
 <br/>
+
+```terminal
+npm install ruler.js --save
 ```
-bower install ruler.js --save
-```
+
 <br/>
-#####Or directly
+Then
 <br/>
+
 ```html
-<script src="css/ruler.css"></script>
-<script src="js/ruler.js"></script>
+<script src="node_modules/ruler/css/ruler.css"></script>
+<script src="node_modules/ruler/js/ruler.js"></script>
 ```
+
 <br/>
 ##Getting Started
 <hr>
 <br/>
+
 ```javascript
 var myRuler = new ruler({
         container: document.querySelector('#stage'),// reference to DOM element to apply rulers on

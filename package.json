@@ -1,7 +1,9 @@
 {
-  "version": "0.0.3",
+  "version": "0.0.4",
+  "name": "ruler.js",
+  "main": "app/js/ruler.js",
   "dependencies": {},
-  "repository": "https://github.com/yuvalsaraf/generator-bower-package.git",
+  "repository": "https://github.com/MrFrankel/ruler.git",
   "description": "canvas rulers",
   "devDependencies": {
     "connect-modrewrite": "^0.7.6",
