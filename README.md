@@ -3,7 +3,7 @@ ruler.js
 
 Demo page
 ### Demo
-<a class="jsbin-embed" href="http://jsbin.com/nosumaroci/embed?html,css,js">JS Bin on jsbin.com</a><script src="http://static.jsbin.com/js/embed.min.js?3.41.5"></script>
+<a class="jsbin-embed" href="http://jsbin.com/nosumaroci/embed?html,css,js">JS Bin on jsbin.com</a>
 
 
 ruler.js is an HTML5 ruler plugin that provides a set of 'photoshop' like rulers to surround the 'stage' of your authoring tools.
