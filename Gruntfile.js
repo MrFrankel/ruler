@@ -101,19 +101,6 @@ module.exports = function(grunt) {
                     'dist/ruler.min.js': ['<%= bowerApp.app %>/js/ruler.js']
                 }
             }
-        },
-        // Automatically inject Bower components into the app
-        bowerInstall: {
-            app: {
-                src: ['<%= bowerApp.app %>/demo/index.html'],
-                ignorePath: '<%= bowerApp.app %>/'
-            }
-        },
-        // Upload bower component
-        shell: {
-            bowerRegister: {
-                command: 'bower register ' + require('./bower.json').name + ' ' + require('./bower.json').repository.url
-            }
         }
     });
     // Load tasks
@@ -133,6 +120,5 @@ module.exports = function(grunt) {
     ]);
 
     // Register new tasks
-    grunt.registerTask('serve', ['bowerInstall', 'connect', 'watch']);
-    grunt.registerTask('publish', ['shell:bowerRegister']);
+    grunt.registerTask('serve', ['connect', 'watch']);
 }

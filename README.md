@@ -9,6 +9,7 @@ Demo page
 ruler.js is an HTML5 ruler plugin that provides a set of 'photoshop' like rulers to surround the 'stage' of your authoring tools.
 No jquery!
 No dependencies!
+
 ###Installation
 <hr>
 <br/>
@@ -22,12 +23,14 @@ Then
 <br/>
 
 ```html
-<script src="node_modules/ruler/css/ruler.css"></script>
-<script src="node_modules/ruler/js/ruler.js"></script>
+<script src="node_modules/ruler/dist/ruler.min.css"></script>
+<script src="node_modules/ruler/dist/ruler.min.js"></script>
 ```
 
 <br/>
+
 ##Getting Started
+
 <hr>
 <br/>
 
@@ -100,8 +103,7 @@ ruler.js uses grunt.
 ```sh
 $ git clone https://github.com/MrFrankel/ruler.git
 $ npm install
-$ bower install
-$ grunt build
+$ grunt serve
 ```
 
 ### Todo's
