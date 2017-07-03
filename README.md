@@ -22,7 +22,7 @@ Then
 <br/>
 
 ```html
-<script src="node_modules/ruler.js/dist/ruler.min.css"></script>
+<link rel="stylesheet" href="node_modules/ruler.js/dist/ruler.min.css">
 <script src="node_modules/ruler.js//dist/ruler.min.js"></script>
 ```
 
