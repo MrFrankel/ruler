@@ -1,7 +1,7 @@
 {
-  "version": "0.0.4",
+  "version": "0.0.5",
   "name": "ruler.js",
-  "main": "app/js/ruler.js",
+  "main": "dist/ruler.js",
   "dependencies": {},
   "repository": "https://github.com/MrFrankel/ruler.git",
   "description": "canvas rulers",
@@ -12,8 +12,10 @@
     "grunt-contrib-connect": "^0.8.0",
     "grunt-contrib-cssmin": "^0.12.3",
     "grunt-contrib-uglify": "^0.9.1",
+    "grunt-contrib-watch": "^1.0.0",
     "grunt-express": "^1.4.0",
     "grunt-filerev": "^2.3.1",
+    "grunt-parallel": "^0.5.1",
     "grunt-shell": "^0.7.0"
   }
 }

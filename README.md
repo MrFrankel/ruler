@@ -65,15 +65,15 @@ myRuler.api.clearGuides(true);
 /*
 get list of guides to store or copy
 */
-myRuler.api.getGuides(true);
+myRuler.api.getGuides(); // => [{dimension: number, poxX: number: posY: number}...]
 /*
 set guides from a pre stored list
 */
-myRuler.api.setGuides(true);
+myRuler.api.setGuides([{dimension: number, poxX: number: posY: number}...]);
 /*
 clear all guides
 */
-myRuler.api.destory(true);
+myRuler.api.destory();
 /*
 remove rulers, guides and references;
 */
