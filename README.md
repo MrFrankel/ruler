@@ -103,7 +103,7 @@ ruler.js uses grunt.
 ```sh
 $ git clone https://github.com/MrFrankel/ruler.git
 $ npm install
-$ grunt serve
+$ npm run serve
 ```
 
 ### Todo's
