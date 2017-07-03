@@ -1,5 +1,5 @@
 {
-  "version": "0.0.5",
+  "version": "1.0.0",
   "name": "ruler.js",
   "main": "dist/ruler.js",
   "dependencies": {},
