@@ -22,8 +22,8 @@ Then
 <br/>
 
 ```html
-<script src="node_modules/ruler/dist/ruler.min.css"></script>
-<script src="node_modules/ruler/dist/ruler.min.js"></script>
+<script src="node_modules/ruler.js/dist/ruler.min.css"></script>
+<script src="node_modules/ruler.js//dist/ruler.min.js"></script>
 ```
 
 <br/>
