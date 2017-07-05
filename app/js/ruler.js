@@ -70,7 +70,7 @@ ruler.prototype.builder = function(){
     }
   };
 
-  var constructGuide = function (dimension, x, y, e) {
+  var constructGuide = function (dimension, x, y, e, isSet) {
     var guideIndex;
     var moveCB = function (line, x, y) {
       var coor = line.dimension === VERTICAL ? x : y;
@@ -102,9 +102,11 @@ ruler.prototype.builder = function(){
     guide = theRulerDOM.appendChild(guide);
     if (dimension === VERTICAL) {
       guide.style.left = ruler.prototype.utils.pixelize(x - options.container.getBoundingClientRect().left);
+      if (isSet) guide.style.left = ruler.prototype.utils.pixelize( Math.round( x / CUR_SCALE ) + options.rulerHeight );
     }
     else {
       guide.style.top = ruler.prototype.utils.pixelize(y - options.container.getBoundingClientRect().top);
+      if (isSet) guide.style.top = ruler.prototype.utils.pixelize( Math.round( y / CUR_SCALE ) + options.rulerHeight );
     }
     guides.push({
       dimension: dimension,
@@ -289,7 +291,7 @@ ruler.prototype.builder = function(){
   var setGuides = function (_guides) {
     if(!_guides){return}
     _guides.forEach(function (guide) {
-      constructGuide(guide.dimension, guide.posX, guide.posY)
+      constructGuide(guide.dimension, guide.posX, guide.posY, null, true)
     })
 
   };
