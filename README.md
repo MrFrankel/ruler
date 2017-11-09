@@ -2,7 +2,7 @@ ruler.js
 ======
 
 ### Demo
-<a href="Demo page">Demo Page</a>
+<a href="https://mrfrankel.github.io/ruler/">Demo Page</a>
 
 
 ruler.js is an HTML5 ruler plugin that provides a set of 'photoshop' like rulers to surround the 'stage' of your authoring tools.
