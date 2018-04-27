@@ -51,7 +51,7 @@ myRuler.api.setPos({x:100, y:100})
 /*
 change the left, top, positions of the rulers
 */
-myRuler.api.scale(1.5);
+myRuler.api.setScale(1.5);
 /*
 change the scale of the points
 */
