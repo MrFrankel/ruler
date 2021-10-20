@@ -75,7 +75,7 @@ myRuler.api.setGuides([{dimension: number, poxX: number: posY: number}...]);
 /*
 clear all guides
 */
-myRuler.api.destory();
+myRuler.api.destroy();
 /*
 remove rulers, guides and references;
 */
